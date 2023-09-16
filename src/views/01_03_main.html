@@ -1,0 +1,481 @@
+<%- include('include/common/head',{
+  listTitle: 'Main(일문) : Main',
+  title: 'Main(일문)',
+  lang: 'ja'
+}) %>
+<body data-pagestatus="update : 2023.09.17">
+<div class="wrap">
+  <%- include('./include/common/skip_navigation') %>
+
+  <%- include('./include/layout/header') %>
+
+  <main id="container" class="container">
+    <!-- 키배너 -->
+    <section class="section_keybanner">
+      <h2 class="blind">key Visual</h2>
+      <img src="../img/pc/main/key-visual.png" alt="" class="img_pc">
+      <img src="../img/mo/main/key-visual.png" alt="" class="img_mo">
+      <p class="txt">MUSINSAは、韓国のトレンディな若者たちがそれぞれのスタイルを見つける、
+        韓国のNo.1オンラインファッションストアです。
+        国内の様々なところに位置する、MUSINSAのオフラインストアや、セレクトショップで韓国の最旬スタイルを味わってみてください。</p>
+    </section>
+    <!-- //키 배너 -->
+
+    <!-- 매장 정보 -->
+    <section class="section_stores">
+      <h2 class="section_title" id="title_store">FIND OUR STORES</h2>
+      <div class="tabs">
+        <div class="tab_group_city" role="tablist" aria-label="select City">
+          <button class="tab_city" role="tab" aria-selected="true" aria-controls="city-panel-1" id="city-tab-1" tabindex="0">SEOUL</button>
+          <button class="tab_city" role="tab" aria-selected="false" aria-controls="city-panel-2" id="city-tab-2" tabindex="-1">DAEGU</button>
+          <button class="tab_city" role="tab" aria-selected="false" aria-controls="city-panel-3" id="city-tab-3" tabindex="-1">BUSAN</button>
+        </div>
+        <!-- 서울 -->
+        <div class="tabpanel_city" id="city-panel-1" role="tabpanel" tabindex="0" aria-labelledby="city-tab-1">
+          <div class="map_area">
+            <div id="mapSeoul" class="map">
+              <img src="../img/common/map/seoul/hongdae.png" alt="">
+            </div>
+            <div class="tab_group_district" role="radiogroup" aria-labelledby="title_store">
+              <button class="tab_district itaewon" data-id="itaewon" role="radio" aria-checked="false"><span class="btn_stroe_txt">Itaewon</span></button>
+              <button class="tab_district seongsu" data-id="seongsu" role="radio" aria-checked="false"><span class="btn_stroe_txt">Seongsu</span></button>
+              <button class="tab_district hongdae" data-id="hongdae" role="radio" aria-checked="true"><span class="btn_stroe_txt">Hongdae</span></button>
+              <button class="tab_district yeouido" data-id="yeouido" role="radio" aria-checked="false"><span class="btn_stroe_txt">Yeouido</span></button>
+              <button class="tab_district gangnam" data-id="gangnam" role="radio" aria-checked="false"><span class="btn_stroe_txt">Gangnam</span></button>
+            </div>
+            <div class="map_link_list">
+              <a href="#" class="map_link itaewon" data-id="itaewon"><span class="blind">Itaewon</span></a>
+              <a href="#" class="map_link seongsu" data-id="seongsu"><span class="blind">Seongsu</span></a>
+              <a href="#" class="map_link hongdae" data-id="hongdae"><span class="blind">Hongdae</span></a>
+              <a href="#" class="map_link yeouido" data-id="yeouido"><span class="blind">Yeouido</span></a>
+              <a href="#" class="map_link gangnam" data-id="gangnam"><span class="blind">Gangnam</span></a>
+            </div>
+          </div>
+
+          <div class="store_area">
+            <ul class="accordion_list">
+              <!-- 홍대 -->
+              <li class="accordion_item" data-id="hongdae">
+                <span class="district_title">Hongdae</span>
+                <!-- 무신사 홍대 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelHongdae" id="accHongdae">
+                    <span class="accordion_title">MUSINSA HONGDAE</span>
+                  </button>
+                  <div id="accPannelHongdae" role="region" aria-labelledby="accHongdae" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA HONGDAE">
+                      </div>
+                      <p class="store_desc">MUSINSA's flagship store that brings the latest K-fashion trends ahead of anyone else.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 무신사 스탠다드 홍대 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelHongdaeSD" id="accHongdaeSD">
+                    <span class="accordion_title">MUSINSA STANDARD HONGDAE</span>
+                  </button>
+                  <div id="accPannelHongdaeSD" role="region" aria-labelledby="accHongdaeSD" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA STANDARD HONGDAE">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 무신사 테라스 홍대 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelHongdaeT" id="accHongdaeT">
+                    <span class="accordion_title">MUSINSA TERRACE HONGDAE</span>
+                  </button>
+                  <div id="accPannelHongdaeT" role="region" aria-labelledby="accHongdaeT" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA TERRACE HONGDAE ">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 무신사 게러지 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accHongdaeGarage" id="accHongdaeGarage">
+                    <span class="accordion_title">MUSINSA GARAGE</span>
+                  </button>
+                  <div id="accPannelHongdaeGarage" role="region" aria-labelledby="accHongdaeGarage" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA GARAGE">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- 성수 -->
+              <li class="accordion_item" data-id="seongsu" style="display: none;">
+                <span class="district_title">Seongsu</span>
+                <!-- 무신사 스탠다드 성수 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSEONGSU" id="accSeongsu">
+                    <span class="accordion_title">MUSINSA STANDARD SEONGSU</span>
+                  </button>
+                  <div id="accPannelSeongsu" role="region" aria-labelledby="accSeongsu" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA SEONGSU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 무신사 테라스 성수 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeongsuT" id="accSeongsuT">
+                    <span class="accordion_title">MUSINSA TERRACE SEONGSU</span>
+                  </button>
+                  <div id="accPannelSeongsuT" role="region" aria-labelledby="accSeongsuT" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA TERRACE SEONGSU ">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 29CM 성수 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeongsu29CM" id="accSeongsu29CM">
+                    <span class="accordion_title">29CM SEONGSU</span>
+                  </button>
+                  <div id="accPannelSeongsu29CM" role="region" aria-labelledby="accSeongsu29CM" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="29CM SEONGSU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- TTRS -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeongsuTTRS" id="accSeongsuTTRS">
+                    <span class="accordion_title">TTRS</span>
+                  </button>
+                  <div id="accPannelSeongsuTTRS" role="region" aria-labelledby="accSeongsuTTRS" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="TTRS SEONGSU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- EMPTY -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeongsuEMPTY" id="accSeongsuEMPTY">
+                    <span class="accordion_title">EMPTY</span>
+                  </button>
+                  <div id="accPannelSeongsuEMPTY" role="region" aria-labelledby="accSeongsuEMPTY" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="EMPTY SEONGSU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- SQUARE SEONGSU -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeongsuSquare" id="accSeongsuSquare">
+                    <span class="accordion_title">SQUARE SEONGSU</span>
+                  </button>
+                  <div id="accPannelSeongsuSquare" role="region" aria-labelledby="accSeongsuSquare" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="SQUARE SEONGSU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ASNISUM -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeongsuAsnisum" id="accSeongsuAsnisum">
+                    <span class="accordion_title">ASNISUM</span>
+                  </button>
+                  <div id="accPannelSeongsuAsnisum" role="region" aria-labelledby="accSeongsuAsnisum" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="ASNISUM SEONGSU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- 강남 -->
+              <li class="accordion_item" data-id="gangnam" style="display: none;">
+                <span class="district_title">Gangnam</span>
+                <!-- 무신사 스탠다드 강남 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelGangnamSD" id="accGangnamSD">
+                    <span class="accordion_title">MUSINSA STANDARD GANGNAM</span>
+                  </button>
+                  <div id="accPannelGangnamSD" role="region" aria-labelledby="accGangnamSD" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA STANDARD GANGNAM">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- 여의도 -->
+              <li class="accordion_item" data-id="yeouido" style="display: none;">
+                <span class="district_title">YEOUIDO</span>
+                <!-- 29CM 갤러리 서울 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelSeoulGallery" id="accSeoulGallery">
+                    <span class="accordion_title">29CM GALLERY SEOUL</span>
+                  </button>
+                  <div id="accPannelSeoulGallery" role="region" aria-labelledby="accSeoulGallery" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="29CM GALLERY SEOUL">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- 이태원 -->
+              <li class="accordion_item" data-id="itaewon" style="display: none;">
+                <span class="district_title">ITEAWON</span>
+                <!-- 스퀘어 한남 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelHannamSquare" id="accHannamSquare">
+                    <span class="accordion_title">SQUARE HANNAM</span>
+                  </button>
+                  <div id="accPannelHannamSquare" role="region" aria-labelledby="accHannamSquare" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="SQUARE HANNAM">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 애글릿 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelAGLET" id="accAGLET">
+                    <span class="accordion_title">AGLET</span>
+                  </button>
+                  <div id="accPannelAGLET" role="region" aria-labelledby="accAGLET" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="SQUARE HANNAM">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- // 서울 -->
+
+        <!-- 대구 -->
+        <div class="tabpanel_city" id="city-panel-2" role="tabpanel" tabindex="-1" aria-labelledby="city-tab-2" hidden>
+          <div class="map_area">
+            <div id="mapDaegu" class="map">
+              <img src="../img/common/map/daegu/default.png" alt="">
+            </div>
+            <div class="tab_group_district" role="radiogroup" aria-labelledby="title_store">
+              <button class="tab_district dongsungro" data-id="dongsungro" role="radio" aria-checked="false"><span class="btn_stroe_txt">Dongsungro</span></button>
+            </div>
+            <div class="map_link_list">
+              <a href="#" class="map_link dongsungro" data-id="dongsungro"><span class="blind">Dongsungro</span></a>
+            </div>
+          </div>
+
+          <div class="store_area">
+            <ul class="accordion_list">
+              <!-- 동성로 -->
+              <li class="accordion_item" data-id="dongsungro">
+                <span class="district_title">DONGSUNG-RO</span>
+                <!-- 무신사 스탠다드 동성로 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelDongsungroSD" id="accDongsungroSD">
+                    <span class="accordion_title">MUSINSA STANDARD DONGSUNGRO</span>
+                  </button>
+                  <div id="accPannelDongsungroSD" role="region" aria-labelledby="accDongsungroSD" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA STANDARD DONGSUNGRO">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 29CM 갤러리 대구 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelDaeguGallery" id="accDaeguGallery">
+                    <span class="accordion_title">29CM GALLERY DAEGU</span>
+                  </button>
+                  <div id="accPannelDaeguGallery" role="region" aria-labelledby="accDaeguGallery" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="29CM GALLERY DAEGU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 무신사 대구 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelDaegu" id="accDaegu">
+                    <span class="accordion_title">MUSINSA DAEGU</span>
+                  </button>
+                  <div id="accPannelDaegu" role="region" aria-labelledby="accDaegu" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA DAEGU">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- // 대구 -->
+
+        <!-- 부산 -->
+        <div class="tabpanel_city" id="city-panel-3" role="tabpanel" tabindex="-1" aria-labelledby="city-tab-3" hidden>
+          <div class="map_area">
+            <div id="mapBusan" class="map">
+              <img src="../img/common/map/busan/default.png" alt="">
+            </div>
+            <div class="tab_group_district" role="radiogroup" aria-labelledby="title_store">
+              <button class="tab_district seomyun" data-id="seomyun" role="radio" aria-checked="false"><span class="btn_stroe_txt">SEOMYUN</span></button>
+            </div>
+            <div class="map_link_list">
+              <a href="#" class="map_link seomyun" data-id="seomyun"><span class="blind">SEOMYUN</span></a>
+            </div>
+          </div>
+
+          <div class="store_area">
+            <ul class="accordion_list">
+              <!-- 서면 -->
+              <li class="accordion_item" data-id="seomyun">
+                <span class="district_title">SEOMYUN</span>
+                <!-- 무신사 스탠다드 서면 -->
+                <div class="accordion">
+                  <button type="button" aria-expanded="false" class="accordion_trigger" aria-controls="accPannelseomyunSD" id="accseomyunSD">
+                    <span class="accordion_title">MUSINSA STANDARD SEOMYUN</span>
+                  </button>
+                  <div id="accPannelseomyunSD" role="region" aria-labelledby="accseomyunSD" class="accordion_panel">
+                    <div class="pannel_inner">
+                      <div class="store_img">
+                        <img src="../img/common/store_main/store.png" alt="MUSINSA STANDARD SEOMYUN">
+                      </div>
+                      <p class="store_desc">The 29CM-curated showroom presenting stylish brands in all five senses.</p>
+                      <div class="link_box">
+                        <a href="#" class="link_more">VIEW MORE</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- // 부산 -->
+      </div>
+    </section>
+    <!-- // 매장 정보 -->
+
+
+  </main>
+
+  <%- include('./include/layout/footer') %>
+
+  <%- include('./include/layout/top') %>
+</div>
+
+<%- include('include/common/script',{
+  localsScriptSrc: [
+    '../js/apps/button.js',
+    '../js/apps/header.js',
+    '../js/apps/footer.js',
+    '../js/apps/tab.js',
+    '../js/apps/accordion.js',
+    '../js/apps/map.js',
+  ],
+}) %>
+</body>
+</html>

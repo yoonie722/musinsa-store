@@ -1,0 +1,38 @@
+<%#- include('./include/layout/header') %>
+
+<!-- HEADER -->
+<header id="header" class="header">
+	<div class="header_inner">
+    <div class="header_button_group left">
+      <% if (locals.back) { %>
+        <a class="header_button back">
+          <span class="blind">go back</span>
+        </a>
+      <% } %>
+    </div>
+
+    <div class="header_logo_wrap">
+      <div class="header_logo_inner">
+        <h1 class="header_logo">
+          <a href="#" class="logo_link">
+            <span class="blind">Musinsa</span>
+          </a>
+        </h1>
+      </div>
+    </div>
+
+    <div class="header_button_group right">
+      <button type="button" class="header_button language" aria-expanded="false" aria-controls="layerLanguage" id="language">
+        <span class="blind">change language</span>
+      </button>
+      <div class="layer_language">
+        <div class="btn_lang_list" role="radiogroup" aria-labelledby="language" id="layerLanguage">
+          <button role="radio" aria-checked="true" class="btn_lang jp"><span id="langEN" class="btn_lang_txt">EN</span></button>
+          <button role="radio" aria-checked="false" class="btn_lang ch"><span id="langCH" class="btn_lang_txt">CH</span></button>
+          <button role="radio" aria-checked="false" class="btn_lang jp"><span id="langJP" class="btn_lang_txt">JP</span></button>
+        </div>
+      </div>
+    </div>
+	</div>
+</header>
+<!--// HEADER -->

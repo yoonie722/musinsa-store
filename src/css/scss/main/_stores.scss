@@ -1,0 +1,58 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+@use "../../sprites-data/pc-svg-mixins";
+@use "../../sprites-data/mo-svg-mixins";
+@use "../../sprites-data/retina_mo";
+
+.section_stores {
+  margin-top: var(--spacing-top);
+
+  .store_area {
+    padding-top: 43px;
+    @media #{$breakpoint_pc} {
+      padding-top: 88px;
+    }
+  }
+
+  .section_title {
+    border-top: 1px solid $black;
+
+    @media #{$breakpoint_pc} {
+      padding: 27px 0 30px;
+      @include font(62, 64);
+    }
+    @media #{$breakpoint_mo} {
+      padding: 8px 0 14px;
+      @include font(22, 24);
+    }
+  }
+
+  // city
+  .tab_group_city {
+    @media #{$breakpoint_pc} {
+      margin: 18px 0;
+    }
+    @media #{$breakpoint_mo} {
+      margin: 5px 0;
+    }
+  }
+
+  .tab_city {
+    @media #{$breakpoint_pc} {
+      margin-left: 26px;
+      padding: 4px;
+      @include font(28, 32);
+    }
+    @media #{$breakpoint_mo} {
+      padding: 4px;
+      @include font(15, 17);
+    }
+    color: $silver;
+    &[aria-selected="true"] {
+      color: $black;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

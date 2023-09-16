@@ -1,0 +1,33 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+@use "../../sprites-data/pc-svg-mixins" as *;
+@use "../../sprites-data/mo-svg-mixins" as *;
+
+.btn_top {
+  &_area {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 10px;
+    z-index: $z-layer;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility .3s ease-in-out 0s, opacity .3s ease-in-out 0s;
+    will-change: opacity;
+    bottom: calc(env(safe-area-inset-bottom) + 68px);
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(10, 15, 24, .4);
+
+  &:after {
+    display: block;
+    @include useSvg-mo('top');
+    content: '';
+  }
+}

@@ -1,0 +1,241 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+@use "../../sprites-data/pc-svg-mixins" as *;
+@use "../../sprites-data/mo-svg-mixins" as *;
+@use "../../sprites-data/retina_mo" as *;
+
+.section_sub {
+  padding-top: 15px;
+  @media #{$breakpoint_pc} {
+    padding-top: 90px;
+  }
+
+  .title_wrap {
+    border-top: 1px solid $black;
+
+    .title {
+      padding: 8px 0;
+      @include font(22, 26, 400);
+      @media #{$breakpoint_pc} {
+        padding: 26px 0;
+        @include font(62, 64, 400);
+      }
+    }
+  }
+
+  .store_info_area {
+    margin-top: 44px;
+    @media #{$breakpoint_pc} {
+      margin-top: 85px;
+    }
+
+    .store_swiper {
+      overflow: hidden;
+      position: relative;
+      .store_img_item {
+        overflow: hidden;
+        width: 100%;
+        // height: 676px;
+        height: 0;
+        padding-bottom: 56.3%;
+      }
+      .thumb {
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          transform: translate(-50%, -50%);
+          object-fit: cover;
+        }
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: auto;
+        padding: 5px;
+        color: $white;
+        transform: translateY(-2px);
+        &:after {
+          font-size: 18px;
+          @media #{$breakpoint_pc} {
+            font-size: 52px;
+          }
+        }
+
+        &.swiper-button-disabled {
+          opacity: .5;
+        }
+      }
+
+      .swiper-button-prev {
+        @media #{$breakpoint_mo} {
+          left: 5px;
+        }
+      }
+      .swiper-button-next {
+        @media #{$breakpoint_mo} {
+          right: 5px;
+        }
+      }
+    }
+
+    .info_txt {
+      margin-top: 14px;
+      @media #{$breakpoint_pc} {
+        margin-top: 30px;
+        @include font(26, 36);
+      }
+    }
+  }
+
+  .detail_info_area {
+    margin-top: 67px;
+    @media #{$breakpoint_pc} {
+      margin-top: 137px;
+    }
+
+    .detail_info {
+      margin-top: 44px;
+      @media #{$breakpoint_pc} {
+        margin-top: 90px;
+      }
+    }
+
+    .info_block {
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid $black;
+
+      &.map {
+        flex-direction: column;
+        dd {
+          padding-top: 0;
+        }
+      }
+    }
+
+    dt, dd {
+      width: 100%;
+      padding: 8px 0 16px;
+      @media #{$breakpoint_pc} {
+        padding: 22px 0 30px;
+      }
+    }
+
+    dt {
+      flex-basis: 35%;
+      flex-shrink: 0;
+      padding-right: 8px;
+      @media #{$breakpoint_pc} {
+        flex-basis: 50%;
+        padding-right: 30px;
+      }
+    }
+
+    dd {
+      &.pg_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        @media #{$breakpoint_pc} {
+          gap: 14px;
+        }
+      }
+    }
+
+    .map_area {
+      overflow: hidden;
+      position: relative;
+      // height: 676px;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.3%;
+      background: #000;
+      .map {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+      }
+    }
+
+    .pg_logo {
+      position: relative;
+      width: 68px;
+      height: 47px;
+      @media #{$breakpoint_pc} {
+        width: 104px;
+        height: 71px;
+      }
+
+      &.soon {
+        &:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba($black, .6);
+          border-radius: 3px;
+          content: '';
+        }
+      }
+
+      &.alipay {
+        @include mo-bg('alipay@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('alipay', $pcPath+'pay/');
+        }
+      }
+
+      &.applepay {
+        @include mo-bg('applepay@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('applepay', $pcPath+'pay/');
+        }
+      }
+
+      &.wechatpay {
+        @include mo-bg('wechatpay@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('wechatpay', $pcPath+'pay/');
+        }
+      }
+
+      &.unionpay {
+        @include mo-bg('unionpay@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('unionpay', $pcPath+'pay/');
+        }
+      }
+
+      &.mastercard {
+        @include mo-bg('mastercard@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('mastercard', $pcPath+'pay/');
+        }
+      }
+
+      &.visacard {
+        @include mo-bg('visacard@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('visacard', $pcPath+'pay/');
+        }
+      }
+
+      &.taxfree {
+        @include mo-bg('taxfree@2x', $moPath+'pay/');
+        @media #{$breakpoint_pc} {
+          @include pc-bg('taxfree', $pcPath+'pay/');
+        }
+      }
+
+
+    }
+  }
+}

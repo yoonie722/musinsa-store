@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Helvetica Neue Regular"),
+    url("../font/woff2/Helvetica-Neue-Regular.woff2") format("woff2"),
+    url("../font/woff/Helvetica-Neue-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "PingFang Regular";
+  font-weight: 400;
+  font-display: swap;
+  src: local("PingFang Regular"),
+    url("../font/woff2/PingFang-Regular.woff2") format("woff2"),
+    url("../font/woff/PingFang-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ヒラギノ角ゴシック";
+  font-weight: 400;
+  font-display: swap;
+  src: local("ヒラギノ角ゴシック"),
+    url("../font/woff2/ヒラギノ角ゴシック-W4.woff2") format("woff2"),
+    url("../font/woff/ヒラギノ角ゴシック-W4.woff") format("woff");
+}

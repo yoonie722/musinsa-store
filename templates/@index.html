@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title><%= project.projectName %> : 마크업 산출물</title>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700);blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend,li,ol,p,pre,textarea,ul{margin:0;padding:0;font-family:'Noto Sans KR','맑은고딕',MalgunGothic,sans-serif}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}
+ul{list-style:none}button,input,select,textarea{margin:0}
+html{box-sizing:border-box}
+*{box-sizing:inherit}
+:after,:before{box-sizing:inherit}
+audio,embed,img,object,video{height:auto;max-width:100%}
+iframe{border:0}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0;text-align:left}
+header{position:fixed;top:0;left:0;right:0;height:80px;background:#333;z-index:2}
+.clearfix:after,.clearfix:before{content:'';display:block;clear:both}
+h1{float:left;margin:20px;font-size:25px;font-weight:700;color:#eee}h2{padding:7px;font-size:18px;font-weight:700;color:#333;border-bottom:2px solid #333;scroll-margin-top:100px}
+.toc{margin-top:80px;padding: 20px;background:#f4f4f4}
+.toc h2{font-size:14px;}
+.toc ul{margin-bottom:0}
+.toc li{padding:3px 10px;}
+.section_list{padding:0 20px;margin:0 0 38px}ul{margin-bottom:20px}
+li{display:block;padding:7px 10px;border-bottom:1px solid #eee}
+li span{margin-left:10px}
+a{font-size:13px;color:#777;text-decoration:none;letter-spacing:.6px;padding:1px 5px;border-radius:3px}
+a:hover{color:#333}footer{position:fixed;left:0;right:0;bottom:0;padding:10px 20px;background:#333;text-align:center}
+footer p{font-size:12px;color:#fff;letter-spacing:2px}
+footer strong{text-transform:uppercase}
+.section_badge{padding:15px 20px 0;}
+.new{display:inline-block;position:relative;top:-1px;height:16px;padding:0 5px 1px;border-radius:3px;background:#fd3939;font-family:verdana;font-size:11px;font-weight:400;color:#fff;line-height:16px;vertical-align:middle;margin-left:0;}
+.new:before{content:'신규 ';}
+.update{display:inline-block;position:relative;top:-1px;height:16px;background:#45a7fb;color:#fff;padding:0 5px 1px;border-radius:3px;font-family:verdana;font-size:11px;font-weight:400;line-height:16px;vertical-align:middle;margin-left:0}
+.update:before{content:'업데이트 ';}
+.done{display:inline-block;position:relative;top:-1px;height:16px;background:#000;color:#fff;padding:0 5px 1px;border-radius:3px;font-family:verdana;font-size:11px;font-weight:400;line-height:16px;vertical-align:middle;margin-left:0}
+.done:before{content:'완료 ';}
+@media screen and (max-width:767px){
+h1{font-size:18px;margin:15px 15px 0}
+header{height:120px}.section_list{margin:0 0 28px}
+}
+</style>
+</head>
+<body>
+	<header>
+		<h1><%= project.projectName %> : 마크업 산출물</h1>
+	</header>
+	<section class="toc">
+		<h2>카테고리 바로가기</h2>
+		<ul>
+			<% for (var i=0; i < 100 ; i++){
+					var categoryNum = String("0" + i).slice(-2);
+					var colIndex = 0;
+					var nfileList = nfiles;
+					for(var j=0 ; j < nfileList.length; j++){
+						if (categoryNum == nfileList[j].category){
+							if (colIndex == 0){ %>
+			<li><a href="#tab<%= categoryNum %>"><%= nfileList[j].categoryText %></a></li><%}
+							colIndex++;
+						}
+					}
+				}%>
+		</ul>
+	</section>
+	<section class="section_badge">
+		<span class="new">2023.09.17</span>
+		<span class="update">2023.09.17</span>
+		<span class="done">2023.09.17</span>
+	</section>
+	<section class="section_list">
+    <% if(dfileList) { %>
+		<h2 id="tab_doc" class="sec_h">Document</h2>
+    <% } %>
+		<ul><%
+			var dfileList = dfiles;
+			for(var i=0 ; i < dfileList.length; i++){ %>
+			<li>
+				<a href="views/<%= dfileList[i].name %>"><%= dfileList[i].listTitle %> / <span class="filename"><%= dfileList[i].name %></span></a>
+				<% if (dfileList[i].splitStatus) { %>
+				<span class="label_date <%= dfileList[i].splitStatus %>"><%= dfileList[i].splitStatusDate %></span>
+				<% } %>
+			</li><%} %>
+		</ul><%
+		for (var i=0; i < 100 ; i++){
+			var categoryNum = String("0" + i).slice(-2);
+			var listCount = 0;
+			var nfileList = nfiles;
+			var lastCategory = nfileList[nfileList.length - 1].category;
+			for(var j=0 ; j < nfileList.length; j++){
+				if (categoryNum == nfileList[j].category){
+					if (listCount == 0){ %>
+		<h2 id="tab<%= categoryNum %>"><%= nfileList[j].categoryText %></h2>
+		<ul><%} %>
+			<li>
+				<a href="views/<%= nfileList[j].name %>">
+					<%= nfileList[j].title %> / <span class="filename"><%= nfileList[j].name %></span>
+				</a> <% if (nfileList[j].splitStatus) { %>
+					<span class="label_date <%= nfileList[j].splitStatus %>"><%= nfileList[j].splitStatusDate %></span>
+				  <% } %>
+			</li> <% listCount++; } }  if (categoryNum <= lastCategory) { %>
+		</ul> <%  } } %>
+	</section>
+	<footer>
+		<p><strong>Musinsa</strong><% if(project.projectOrg){ %> / <%= project.projectOrg %><%}%><% if(project.projectAuthor){ %> / <%= project.projectAuthor %><%}%></p>
+	</footer>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+
+</body>
+</html>

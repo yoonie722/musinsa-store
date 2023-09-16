@@ -1,0 +1,28 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+@use "./main/stores";
+@use "./main/map";
+// @use "../../sprites-data/pc-svg-mixins";
+// @use "../../sprites-data/mo-svg-mixins";
+// @use "../../sprites-data/retina_mo";
+
+.section_keybanner {
+  margin-top: 45px;
+
+  @media #{$breakpoint_pc} {
+    margin-top: 92px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .txt {
+    @media #{$breakpoint_pc} {
+      margin-top: 87px;
+    }
+    @media #{$breakpoint_mo} {
+      margin-top: 42px;
+    }
+  }
+}

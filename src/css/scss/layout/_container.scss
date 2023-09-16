@@ -1,0 +1,11 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+
+.container {
+  width: 100%;
+  @media #{$breakpoint_pc} {
+    max-width: var(--content-min-width);
+  }
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}

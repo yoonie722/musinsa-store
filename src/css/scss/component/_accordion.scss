@@ -1,0 +1,159 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+@use "../../sprites-data/pc-svg-mixins" as *;
+@use "../../sprites-data/mo-svg-mixins" as *;
+// @use "../../sprites-data/retina_mo";
+
+.accordion {
+  &_list {
+    position: relative;
+  }
+
+  &_item {
+    position: relative;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:not([style*="display: none"]) + .accordion_item {
+      @media #{$breakpoint_pc} {
+        margin-top: 150px;
+        margin-bottom: 120px;
+      }
+      @media #{$breakpoint_mo} {
+        margin-top: 60px;
+      }
+    }
+  }
+
+  padding-left: 33.62%;
+  border-top: 1px solid $black;
+  @media #{$breakpoint_pc} {
+    padding-left: calc(50% + 15px);
+  }
+
+  &_trigger {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-right: 56px;
+    @include font(15, 18);
+    @media #{$breakpoint_pc} {
+      padding-right: 70px;
+      @include font(28, 32);
+    }
+    text-align: left;
+    &:after {
+      position: absolute;
+      top: 4px;
+      right: 20px;
+      transform: rotate(-180deg);
+      transition: transform .2s ease-in-out;
+      @include useSvg-mo('arrow');
+      @media #{$breakpoint_pc} {
+        @include useSvg-pc('arrow-down');
+        top: 16px;
+        transform: rotate(-90deg);
+      }
+      content: '';
+    }
+    &[aria-expanded="true"] {
+      &:after {
+        transform: rotate(0);
+        @media #{$breakpoint_pc} {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &_title {
+    display: block;
+    padding: 4px 0 12px;
+    @media #{$breakpoint_pc} {
+      padding: 16px 0 24px;
+    }
+    text-transform: uppercase;
+  }
+
+  &_panel {
+    overflow: hidden;
+    height: 0;
+    transition: height .4s ease-in-out;
+    .pannel_inner {
+      padding-bottom: 17px;
+      @media #{$breakpoint_pc} {
+        padding-bottom: 52px;
+      }
+    }
+    .store_img {
+      max-width: 585px;
+      max-height: 343px;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+    .store_desc {
+      margin-top: 12px;
+    }
+  }
+
+  .link_box {
+    text-align: right;
+    padding: 19px 8px 0 0;
+    @media #{$breakpoint_pc} {
+      padding: 17px 20px 0 0;
+    }
+    .link_more {
+      position: relative;
+      display: inline-block;
+      padding-right: 24px;
+      @include font(15, 17);
+      @media #{$breakpoint_pc} {
+        padding-right: 46px;
+        @include font(28, 32);
+      }
+      &:before {
+        position: absolute;
+        top: 0;
+        right: 8px;
+        display: block;
+        width: 1px;
+        height: 17px;
+        background-color: $black;
+        content: '';
+        @media #{$breakpoint_pc} {
+          right: 15px;
+          width: 2px;
+          height: 31px;
+        }
+      }
+      &:after {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        display: block;
+        width: 17px;
+        height: 1px;
+        margin-top: -1px;
+        background-color: $black;
+        content: '';
+        @media #{$breakpoint_pc} {
+          width: 31px;
+          height: 2px;
+        }
+      }
+    }
+  }
+}
+
+.district_title {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  text-transform: uppercase;
+  @media #{$breakpoint_pc} {
+    top: 16px;
+  }
+}

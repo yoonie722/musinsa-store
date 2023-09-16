@@ -1,0 +1,72 @@
+<%#
+  [필수] listTitle: index텍스트  : 카테고리명
+  [필수] title: <title>텍스트
+  [옵션l localsUIO: uio가이드 페이지
+  [옵션l localsMeta (SEO/OG)
+    ㄴSEO name="keywords" || "description" || "date" || "sitecode"
+    ㄴOG property="og:url" || "og:image" || "og:type" || "og:site_name" || "og:locale" || "og:title" || "og:description" || "og:country-name"
+    ㄴcontent
+%>
+<%#- include('includes/common/head',{
+  listTitle: 'Button : 카테고리명',
+  title: '타이틀텍스트',
+  localsUIO: true,
+  localsMeta: [
+    [
+      'name="keywords"',
+      'keywordscontent',
+    ],
+    [
+      'property="og:url"',
+      'urlcontent',
+    ],
+  ],
+}) %>
+
+<!DOCTYPE html>
+<html
+<% if (locals.lang === 'zh') { %>
+  lang="zh-CN"
+<% } else if (locals.lang === 'ja') { %>
+  lang="ja"
+<% } else { %>
+  lang="en"
+<% } %>
+>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="list" content="<%= listTitle %>">
+<title><%= title %></title>
+
+<!-- meta: SEO || OG-->
+<!-- <meta property="title" content="">
+<meta property="description" content="">
+<meta property="og:title" content="">
+<meta property="og:image" content="https://image.msscdn.net/global/images/2023/09/06/80a6bb2dfa3c4e62b5ef4567095a70b3.jpg">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://image.msscdn.net/global/images/2023/09/06/80a6bb2dfa3c4e62b5ef4567095a70b3.jpg"> -->
+
+<!-- <link rel="canonical" href="" /> -->
+<!-- // meta: SEO || OG -->
+
+<!-- Icon & Favicon -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" href="../favicon-180x180.png">
+
+<link rel="shortcut icon" href="//image.msscdn.net/favicon_152.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon-precomposed" href="//image.msscdn.net/apple-touch-icon-precomposed_128.png" />
+<link rel="apple-touch-icon-precomposed" href="//image.msscdn.net/apple-touch-icon-precomposed_152.png" sizes="152x152" />
+<link rel="apple-touch-icon-precomposed" href="//image.msscdn.net/apple-touch-icon-precomposed_180.png" sizes="180x180" />
+<!-- // Icon & Favicon -->
+
+<link rel="stylesheet" href="../css/libs.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>

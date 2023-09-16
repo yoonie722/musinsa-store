@@ -1,0 +1,19 @@
+<%#
+  [옵션] localsScriptSrc: 스크립트 파일 경로
+%>
+<%#- include('include/common/script') %>
+<%#- include('include/common/script',{
+  localsScriptSrc: [
+  "../js/apps/",
+  "../js/apps/",
+  ],
+}) %>
+<!-- Javascript -->
+<script src="../js/libs/vendor.min.js"></script>
+<script src="../js/libs/swiper.min.js"></script>
+<% if (locals.localsScriptSrc) { %>
+<% for( let src of localsScriptSrc ) { %>
+  <script src="<%- src _%>"></script>
+<% } %>
+<% } %>
+<!-- // Javascript -->

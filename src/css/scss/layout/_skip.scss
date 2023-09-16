@@ -1,0 +1,32 @@
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+
+.nav_skip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-skip;
+  width: 100%;
+	@media #{$breakpoint_mo} {
+    display: none;
+  }
+}
+.btn_skip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: blue;
+  @include font(15);
+  color: $silver;
+  text-align: center;
+  &:focus {
+    top: 0;
+    bottom: auto;
+  }
+}

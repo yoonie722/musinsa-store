@@ -1,0 +1,103 @@
+@charset "utf-8";
+@use "../common/variable" as *;
+@use "../mixins/mixins" as *;
+
+html,
+body {;
+  height: 100%;
+  font-size: 10px; // rem 사용중
+  line-height: normal;
+}
+
+html {
+  :lang(en) {
+    font-family: $font-family-en;
+  }
+  :lang(ja) {
+    font-family: $font-family-jp;
+  }
+  :lang(zh) {
+    font-family: $font-family-zh;
+  }
+  :lang(cn) {
+    font-family: $font-family-zh;
+  }
+  &[lang="zh"],
+  &[lang="cn"] {
+    letter-spacing: 0;
+  }
+}
+
+body,
+input,
+select,
+textarea,
+button {
+  font-family: $font-family-en;
+  @include font(15, 18, 400);
+  @media #{$breakpoint_pc} {
+    @include font(26, 36, 400);
+  }
+  color: $black;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+a {
+  line-height: normal;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  @include font(15, 18, 400);
+  @media #{$breakpoint_pc} {
+    @include font(26, 36, 400);
+  }
+  color: $black;
+  letter-spacing: -.1px;
+}
+
+.blind {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.wrap,
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.wrap {
+  flex: 1 0 auto;
+  min-width: 100%;
+}
+
+.container {
+  flex: 1 1 auto;
+}
+
+.img_pc,
+.br_pc {
+  @media #{$breakpoint_mo} {
+    display: none;
+  }
+}
+
+.img_mo,
+.br_mo {
+  @media #{$breakpoint_pc} {
+    display: none;
+  }
+}

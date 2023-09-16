@@ -1,0 +1,177 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "../common/variable" as *;
+
+// 폰트
+@mixin font($size: $initial-font-size, $lineHeight: false, $weight: false) {
+  $lineHeightSet: 0;
+  font-size: setRem($size);
+  @if $lineHeight {
+    @if $lineHeight== "normal" {
+      line-height: normal;
+    } @else {
+      @if math.is-unitless($lineHeight) {
+        $lineHeightSet: calc(($lineHeight * 100 / $size) / 100);
+      } @else {
+        $lineHeightSet: $lineHeight;
+      }
+      line-height: $lineHeightSet;
+    }
+  }
+	@if $weight {
+		font-weight: $weight;
+	}
+}
+@function setRem($size) {
+  $remSize: calc(($size * 100 / $initial-font-size) / 100);
+  @return $remSize * 1rem;
+}
+
+// 말줄임
+@mixin ellipsis($line-num: 1) {
+  overflow: hidden;
+  @if $line-num > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $line-num;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  } @else {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+/* safe area
+  - @include safeArea(true, padding, 10px 5px right left);
+  - @include safeArea(false, padding, 5px bottom);
+  - $all: true / false(multi / single)
+  - $attr: selector
+  - $val...: value direction
+*/
+@mixin safeArea($all: false, $attr: padding, $val...) {
+  @if (($attr == padding or $attr == margin) and $all == false) {
+    #{$attr}-#{separateVal($val, false)}: safeAresLoop($all, "env", $attr, $val);
+    #{$attr}-#{separateVal($val, false)}: safeAresLoop($all, "constant", $attr, $val);
+  } @else {
+    #{$attr}: safeAresLoop($all, "env", $attr, $val);
+    #{$attr}: safeAresLoop($all, "constant", $attr, $val);
+  }
+}
+@function separateVal($val, $boolean) {
+  $val: list.nth($val, 1);
+  $returnVal: 0;
+  $returnStringVal: 0;
+  $stringIdx: 0;
+  @for $i from 1 through list.length($val) {
+    @if (meta.type-of(list.nth($val, $i)) != string and $i == 1) {
+      $returnVal: list.nth($val, $i);
+    } @else if(meta.type-of(list.nth($val, $i)) !=string and $i != 1) {
+      $returnVal: list.join($returnVal, list.nth($val, $i));
+    } @else if(meta.type-of(list.nth($val, $i)) == string and $stringIdx == 0) {
+      $stringIdx: $i;
+      $returnStringVal: list.nth($val, $i);
+    } @else {
+      $returnStringVal: list.join($returnStringVal, list.nth($val, $i));
+    }
+  }
+
+  @if ($boolean == true) {
+    @return $returnVal;
+  } @else {
+    @return $returnStringVal;
+  }
+}
+@function dirFlag($receiveDirFlag, $receiveDir) {
+  @if ($receiveDirFlag != list.length($receiveDir)) {
+    @return $receiveDirFlag + 1;
+  }
+  @return $receiveDirFlag;
+}
+
+@function safeAresLoop($all, $set, $attr, $val) {
+  $dir: top, right, bottom, left;
+  $receiveDir: separateVal($val, false);
+  $receiveDirFlag: 1;
+  $realVal: separateVal($val, true);
+  $returnVal: "";
+  $safeArea: "";
+
+  // value 축약형 변환
+  @if (list.length($realVal) ==1) {
+    $realVal: $realVal $realVal $realVal $realVal;
+  } @else if(list.length($realVal) ==2) {
+    $realVal: list.nth($realVal, 1) list.nth($realVal, 2) list.nth($realVal, 1) list.nth($realVal, 2);
+  } @else if(list.length($realVal) ==3) {
+    $realVal: list.nth($realVal, 1) list.nth($realVal, 2) list.nth($realVal, 3) list.nth($realVal, 2);
+  } @else if(list.length($realVal) ==4) {
+    $realVal: $realVal;
+  } @else {
+    @error 'safeAresLoop length of $val error';
+  }
+
+  @for $i from 1 through 4 {
+    // check $set (env or constant)
+    @if ($set==env) {
+      $safeArea: env(safe-area-inset-#{list.nth($dir, $i)});
+    } @else if($set==constant) {
+      $safeArea: constant(safe-area-inset-#{list.nth($dir, $i)});
+    } @else {
+      @error 'safeAresLoop $set error';
+    }
+
+    // returnVal 초기 값
+    @if ($i == 1) {
+      @if ((list.nth($dir, $i) == list.nth($receiveDir, $receiveDirFlag)) == true and list.nth($realVal, $i) == 0) {
+        $returnVal: $safeArea;
+        $receiveDirFlag: dirFlag($receiveDirFlag, $receiveDir);
+      } @else if((list.nth($dir, $i) == list.nth($receiveDir, $receiveDirFlag)) == true and list.nth($realVal, $i) != 0) {
+        $returnVal: calc(#{list.nth($realVal, $i)} + #{$safeArea});
+        $receiveDirFlag: dirFlag($receiveDirFlag, $receiveDir);
+      } @else {
+        $returnVal: list.nth($realVal, $i);
+      }
+    } @else {
+      // sare-area multi
+      @if ($receiveDir != 0 and $all == true) {
+        @if ((list.nth($dir, $i) == list.nth($receiveDir, $receiveDirFlag)) == true and list.nth($realVal, $i) == 0) {
+          $returnVal: list.join($returnVal, $safeArea);
+          $receiveDirFlag: dirFlag($receiveDirFlag, $receiveDir);
+        } @else if((list.nth($dir, $i) == list.nth($receiveDir, $receiveDirFlag)) == true and list.nth($realVal, $i) != 0) {
+          $returnVal: list.join($returnVal, calc(#{list.nth($realVal, $i)} + #{$safeArea}));
+          $receiveDirFlag: dirFlag($receiveDirFlag, $receiveDir);
+        } @else {
+          $returnVal: list.join($returnVal, list.nth($realVal, $i));
+        }
+      } @else if($receiveDir != 0 and $all == false) {
+        // sare-area single
+        @if ((list.nth($dir, $i) == list.nth($receiveDir, $receiveDirFlag)) == true) {
+          @if (list.nth($realVal, $i) == 0) {
+            $returnVal: $safeArea;
+          } @else {
+            $returnVal: calc(#{list.nth($realVal, $i)} + #{$safeArea});
+          }
+        }
+      } @else {
+        // safe-area 방향 없을 때
+        $returnVal: list.nth($realVal, $i);
+        @warn 'please set drection of safe-area';
+        @return $returnVal;
+      }
+    }
+  }
+  @return $returnVal;
+}
+
+// 백그라운드 이미지
+// @include bg('logo');
+// @include bg('photo', $format:'jpg');
+@mixin mo-bg($name, $path: $moPath, $format: "png") {
+  background-image: url("#{$path}#{$name}.#{$format}");
+  background-size: 100% auto;
+}
+@mixin pc-bg($name, $path: $pcPath, $format: "png") {
+  background-image: url("#{$path}#{$name}.#{$format}");
+  background-size: 100% auto;
+}

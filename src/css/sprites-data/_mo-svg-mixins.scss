@@ -1,0 +1,88 @@
+$mo-svg-origin: (
+  total-width: 180px,
+  total-height: 148px,
+  padding: 4px,
+  imageSrc: '../img/mo-svg.svg'
+);
+
+$mo-svg-vars: (
+  'app-store': (
+    offset-x: 0px,
+    offset-y: 0px,
+    width: 140px,
+    height: 40px
+  ),
+  'arrow': (
+    offset-x: -148px,
+    offset-y: -64px,
+    width: 18px,
+    height: 18px
+  ),
+  'back': (
+    offset-x: -148px,
+    offset-y: 0px,
+    width: 24px,
+    height: 24px
+  ),
+  'copyright': (
+    offset-x: 0px,
+    offset-y: -96px,
+    width: 112px,
+    height: 18px
+  ),
+  'google-play': (
+    offset-x: 0px,
+    offset-y: -48px,
+    width: 140px,
+    height: 40px
+  ),
+  'logo': (
+    offset-x: 0px,
+    offset-y: -122px,
+    width: 107px,
+    height: 18px
+  ),
+  'top': (
+    offset-x: -148px,
+    offset-y: -32px,
+    width: 24px,
+    height: 24px
+  ),
+);
+@function get-ratio($width, $height) {
+    @return parse-int($width / $height);
+}
+
+@function get-scale($width, $new-width) {
+    @return parse-int($new-width / $width);
+}
+
+@mixin useSvg-mo($image, $size: false) {
+  $image-origin: $mo-svg-origin;
+  $image-var: map-get($mo-svg-vars, $image);
+  $image-path: map-get($image-origin, 'imageSrc');
+  $padding: map-get($mo-svg-origin, 'padding');
+  $aspectRatio: calc(map-get($image-var, 'height') / map-get($image-var, 'width'));
+
+  @if($size){    
+    $sizeRatio: calc($size / map-get($image-var, 'width'));
+    @if(unitless($size)){
+      @warn '"#{$size}" of "#{$image}" is unitless value. Please insert value with unit(px)';
+    }
+    @else {
+      width: $size;
+      height: calc(round($size * $aspectRatio * 100) / 100);
+      background-image: url($image-path);
+      background-size: calc(round(map-get($image-origin, 'total-width') * $sizeRatio * 100) / 100) calc(round(map-get($image-origin, 'total-height') * $sizeRatio * 100) / 100);
+			background-position: calc(round((map-get($image-var, 'offset-x') - $padding) * $sizeRatio * 100) / 100) calc(round((map-get($image-var, 'offset-y') - $padding) * $sizeRatio * 100) / 100);
+    }
+  }
+  @else {
+    width: map-get($image-var, 'width');
+    height: map-get($image-var, 'height');
+    background-image: url($image-path);
+    background-size: map-get($image-origin, 'total-width') map-get($image-origin, 'total-height');
+    background-position: (map-get($image-var, 'offset-x') - $padding) (map-get($image-var, 'offset-y') - $padding);
+  }
+  background-repeat: no-repeat;
+}

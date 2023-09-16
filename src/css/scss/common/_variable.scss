@@ -1,0 +1,45 @@
+// font
+$initial-font-size: 10;
+$font-family-en: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Noto Sans", "Segoe UI", Roboto, Arial, sans-serif;
+$font-family-zh: "PingFang Regular", "Noto Sans SC", "Microsoft YaHei UI", "Microsoft JhengHei UI", -apple-system, BlinkMacSystemFont, "Noto Sans", "Segoe UI", Roboto, system-ui, "Helvetica Neue", Arial, sans-serif;
+$font-family-jp: "ヒラギノ角ゴシック", "Hiragino Sans", "Noto Sans JP", YuGothic, Meiryo, -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", Arial, sans-serif;
+
+// color
+$black: #000;
+$silver: #cbcbcb;
+$ghost-white: #f8f9fa;
+$white: #fff;
+
+// z-index
+$z-skip: 1000;
+$z-layer: 1000;
+$z-header: 30;
+$z-container: 20;
+$z-swiper: 2;
+
+// mediaquery
+$breakpoint_mo: "only screen and (max-width: 768px)";
+$breakpoint_pc: "only screen and (min-width: 769px)";
+$breakpoint_height: "only screen and (min-width: 769px) and (min-height: 768px) and (max-height: 1079px)";
+
+// path
+$moPath: '../img/mo/';
+$pcPath: '../img/pc/';
+$svgPath: '../../../img/svg';
+
+// css variables
+.wrap {
+  min-width: var(--content-min-width);
+  @media #{$breakpoint_pc} {
+    --header-min-height: 44px;
+    --content-min-width: calc(1200px + 32px);
+    --side-padding: 16px;
+    --spacing-top: 150px;
+  }
+  @media #{$breakpoint_mo} {
+    --header-min-height: 44px;
+    --content-min-width: 360px;
+    --side-padding: 15px;
+    --spacing-top: 72px;
+  }
+}

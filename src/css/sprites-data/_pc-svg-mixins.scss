@@ -1,0 +1,76 @@
+$pc-svg-origin: (
+  total-width: 138px,
+  total-height: 65px,
+  padding: 4px,
+  imageSrc: '../img/pc-svg.svg'
+);
+
+$pc-svg-vars: (
+  'arrow-down': (
+    offset-x: 0px,
+    offset-y: -30px,
+    width: 27px,
+    height: 27px
+  ),
+  'arrow-sm': (
+    offset-x: -99px,
+    offset-y: -30px,
+    width: 18px,
+    height: 18px
+  ),
+  'back': (
+    offset-x: -35px,
+    offset-y: -30px,
+    width: 24px,
+    height: 24px
+  ),
+  'logo': (
+    offset-x: 0px,
+    offset-y: 0px,
+    width: 130px,
+    height: 22px
+  ),
+  'top': (
+    offset-x: -67px,
+    offset-y: -30px,
+    width: 24px,
+    height: 24px
+  ),
+);
+@function get-ratio($width, $height) {
+    @return parse-int($width / $height);
+}
+
+@function get-scale($width, $new-width) {
+    @return parse-int($new-width / $width);
+}
+
+@mixin useSvg-pc($image, $size: false) {
+  $image-origin: $pc-svg-origin;
+  $image-var: map-get($pc-svg-vars, $image);
+  $image-path: map-get($image-origin, 'imageSrc');
+  $padding: map-get($pc-svg-origin, 'padding');
+  $aspectRatio: calc(map-get($image-var, 'height') / map-get($image-var, 'width'));
+
+  @if($size){    
+    $sizeRatio: calc($size / map-get($image-var, 'width'));
+    @if(unitless($size)){
+      @warn '"#{$size}" of "#{$image}" is unitless value. Please insert value with unit(px)';
+    }
+    @else {
+      width: $size;
+      height: calc(round($size * $aspectRatio * 100) / 100);
+      background-image: url($image-path);
+      background-size: calc(round(map-get($image-origin, 'total-width') * $sizeRatio * 100) / 100) calc(round(map-get($image-origin, 'total-height') * $sizeRatio * 100) / 100);
+			background-position: calc(round((map-get($image-var, 'offset-x') - $padding) * $sizeRatio * 100) / 100) calc(round((map-get($image-var, 'offset-y') - $padding) * $sizeRatio * 100) / 100);
+    }
+  }
+  @else {
+    width: map-get($image-var, 'width');
+    height: map-get($image-var, 'height');
+    background-image: url($image-path);
+    background-size: map-get($image-origin, 'total-width') map-get($image-origin, 'total-height');
+    background-position: (map-get($image-var, 'offset-x') - $padding) (map-get($image-var, 'offset-y') - $padding);
+  }
+  background-repeat: no-repeat;
+}
