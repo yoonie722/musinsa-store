@@ -1,0 +1,53 @@
+<%- include('include/common/head',{
+  listTitle: 'MUSINSA STANDARD DONGSUNGRO : Coming Soon(국문)',
+  title: 'Coming Soon(국문) - MUSINSA STANDARD DONGSUNGRO'
+}) %>
+<body data-pagestatus="update : 2023.09.17">
+<div class="wrap">
+  <%- include('./include/common/skip_navigation') %>
+
+  <%- include('./include/layout/header', {back: true}) %>
+
+  <main id="container" class="container">
+    <div class="section_sub">
+      <div class="title_wrap">
+        <h2 class="title">DONGSUNG-RO</h2>
+      </div>
+
+      <div class="store_info_area">
+        <div class="title_wrap">
+          <h3 class="title">MUSINSA STANDARD DONGSUNGRO</h3>
+        </div>
+
+        <div class="store_swiper_wrap">
+          <div class="store_swiper swiper-container">
+            <ul class="swiper-wrapper store_img_list">
+              <li class="swiper-slide store_img_item">
+                <div class="thumb">
+                  <img src="../img/pc/sub_store/sungsu_29cm/store01.jpg" alt="Coming soon 9/22 금 오픈">
+                </div>
+              </li>
+            </ul>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('./include/layout/footer') %>
+
+  <%- include('./include/layout/top') %>
+</div>
+
+<%- include('include/common/script',{
+  localsScriptSrc: [
+    '../js/apps/button.js',
+    '../js/apps/header.js',
+    '../js/apps/footer.js',
+    '../js/apps/sub.js',
+  ],
+}) %>
+</body>
+</html>
